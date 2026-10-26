@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f4ec">
+  <title>HUMAN.EXE — What Kind of Human Are You?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <span class="shape shape-one">✳</span>
+    <span class="shape shape-two">✦</span>
+    <span class="shape shape-three">+</span>
+    <span class="shape shape-four">✳</span>
+    <span class="shape shape-five">★</span>
+  </div>
+
+  <header class="topbar">
+    <a href="#" class="brand" aria-label="Human EXE home">
+      <span class="brand-icon">H.</span>
+      <span>HUMAN<span class="brand-light">.EXE</span></span>
+    </a>
+    <div class="top-tag"><span class="live-dot"></span> HUMAN ANALYSIS SYSTEM</div>
+  </header>
+
+  <main class="container">
+    <section id="intro" class="intro-section">
+      <div class="eyebrow"><span>✳</span> THE INTERNET'S LEAST SCIENTIFIC TEST</div>
+
+      <h1>What kind of<br>human are <span class="highlight">you?</span></h1>
+
+      <p class="intro-text">
+        A personality test for people who are a little bit chaotic,
+        a little bit confusing, and completely themselves.
+      </p>
+
+      <div class="sticker sticker-yellow">100% UNOFFICIAL</div>
+      <div class="sticker sticker-pink">0% JUDGEMENT</div>
+
+      <div class="preview-card">
+        <div class="preview-top">
+          <span class="mini-window-dots"><i></i><i></i><i></i></span>
+          <span>human_analysis.exe</span>
+          <span class="preview-version">v1.0</span>
+        </div>
+        <div class="preview-content">
+          <div class="preview-emoji" aria-hidden="true">🧠</div>
+          <div class="preview-copy">
+            <strong>Human personality scan</strong>
+            <span>Discover your totally unofficial type.</span>
+          </div>
+          <span class="preview-arrow">↗</span>
+        </div>
+        <div class="preview-bottom">
+          <span>12 QUESTIONS</span>
+          <span>~2 MINUTES</span>
+          <span>NO BAD RESULTS</span>
+        </div>
+      </div>
+
+      <button class="primary-button" id="startBtn" type="button">
+        FIND MY HUMAN TYPE <span>↗</span>
+      </button>
+      <p class="tiny-note">No login. No pressure. Just vibes.</p>
+    </section>
+
+    <section id="quiz" class="quiz-section hidden" aria-live="polite">
+      <div class="quiz-heading">
+        <div>
+          <div class="eyebrow">HUMAN ANALYSIS IN PROGRESS</div>
+          <h2>Be honest. <span class="highlight">Probably.</span></h2>
+        </div>
+        <div class="question-counter" id="questionCounter">01 / 12</div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-number" id="questionNumber">QUESTION 01</div>
+        <h3 id="questionText">Loading question...</h3>
+        <div class="answers" id="answers"></div>
+        <div class="quiz-footer">
+          <button class="text-button" id="backBtn" type="button">← Back</button>
+          <span>Choose the answer that feels most like you.</span>
+        </div>
+      </div>
+      <p class="tiny-note">Your answers are used only to calculate your result on this page.</p>
+    </section>
+
+    <section id="scanning" class="scanning-section hidden" aria-live="polite">
+      <div class="scanner-orbit">
+        <div class="scanner-ring ring-one"></div>
+        <div class="scanner-ring ring-two"></div>
+        <div class="scanner-face">🧠</div>
+        <div class="scanner-cross cross-one">+</div>
+        <div class="scanner-cross cross-two">✳</div>
+      </div>
+      <div class="eyebrow">PLEASE REMAIN YOURSELF</div>
+      <h2 id="scanTitle">Analyzing your human energy...</h2>
+      <p id="scanStatus">Connecting random thoughts</p>
+      <div class="scan-progress">
+        <div id="scanProgressFill"></div>
+      </div>
+      <div class="scan-percent" id="scanPercent">0%</div>
+      <p class="tiny-note">This is a fun quiz, not a scientific assessment.</p>
+    </section>
+
+    <section id="result" class="result-section hidden">
+      <div class="result-heading">
+        <div class="eyebrow"><span>✦</span> ANALYSIS COMPLETE</div>
+        <h2>Your human type is...</h2>
+      </div>
+
+      <div class="result-card" id="resultCard">
+        <div class="result-card-top">
+          <span class="result-logo">HUMAN<span>.EXE</span></span>
+          <span class="result-stamp">OFFICIALLY<br>UNOFFICIAL</span>
+        </div>
+
+        <div class="result-symbol" id="resultEmoji">🌀</div>
+        <div class="result-label">YOUR PERSONALITY CLASSIFICATION</div>
+        <h3 id="resultTitle">The Wildcard Human</h3>
+        <p class="result-tagline" id="resultTagline"></p>
+
+        <div class="result-divider"></div>
+        <p class="result-description" id="resultDescription"></p>
+
+        <div class="result-stats">
+          <div>
+            <span class="stat-label">ENERGY</span>
+            <strong id="statEnergy">Chaotic good</strong>
+          </div>
+          <div>
+            <span class="stat-label">SPECIAL SKILL</span>
+            <strong id="statSkill">Surprise everyone</strong>
+          </div>
+          <div>
+            <span class="stat-label">SYSTEM STATUS</span>
+            <strong>Uniquely you ✓</strong>
+          </div>
+        </div>
+
+        <div class="result-card-footer">
+          <span>DIFFERENT BY DESIGN.</span>
+          <span>H.EXE / PERSONALITY REPORT</span>
+        </div>
+      </div>
+
+      <div class="result-note">
+        <span>✳</span>
+        <p id="resultRoast">Your friendly roast goes here.</p>
+      </div>
+
+      <div class="result-actions">
+        <button class="primary-button" id="certificateBtn" type="button">
+          GET MY CERTIFICATE <span>↗</span>
+        </button>
+        <button class="secondary-button" id="shareBtn" type="button">
+          SHARE MY TYPE ↗
+        </button>
+        <button class="secondary-button" id="retakeBtn" type="button">
+          ↻ RETAKE QUIZ
+        </button>
+      </div>
+      <p class="tiny-note" id="actionStatus" role="status"></p>
+      <p class="disclaimer">Just for fun. You are more than a quiz result.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>HUMAN.EXE © 2026</span>
+    <span>MADE FOR THE BEAUTIFULLY UNPREDICTABLE.</span>
+  </footer>
+
+  <script>
+    const questions = [
+      {
+        q: "Your plans suddenly get cancelled. You...",
+        a: [
+          { text: "Celebrate my unexpected free time.", type: "npc" },
+          { text: "Invent an entirely new adventure.", type: "sidequest" },
+          { text: "Think about every possible reason.", type: "overthinker" },
+          { text: "Find something fun to do immediately.", type: "chaos" }
+        ]
+      },
+      {
+        q: "A big assignment is due tomorrow. Your strategy?",
+        a: [
+          { text: "Finish it early. Peace is priceless.", type: "organized" },
+          { text: "Wait for the pressure to unlock my powers.", type: "procrastinator" },
+          { text: "Make it creative and completely my own.", type: "creative" },
+          { text: "Turn it into a personal competition.", type: "competitive" }
+        ]
+      },
+      {
+        q: "At a party, you are usually...",
+        a: [
+          { text: "Talking to absolutely everyone.", type: "yap" },
+          { text: "Quietly observing the whole room.", type: "observer" },
+          { text: "Making sure everyone feels included.", type: "golden" },
+          { text: "Doing something nobody expected.", type: "wildcard" }
+        ]
+      },
+      {
+        q: "Your friend says, 'I have a crazy idea.' You...",
+        a: [
+          { text: "Say YES before hearing the details.", type: "chaos" },
+          { text: "Ask seventeen follow-up questions.", type: "overthinker" },
+          { text: "Help organize the plan.", type: "organized" },
+          { text: "Suggest an even crazier idea.", type: "wildcard" }
+        ]
+      },
+      {
+        q: "Pick your ideal weekend.",
+        a: [
+          { text: "A plan, a checklist, and everything sorted.", type: "organized" },
+          { text: "Friends, conversations, and lots of laughs.", type: "yap" },
+          { text: "A new place or unexpected activity.", type: "sidequest" },
+          { text: "Comfort, quiet, and no unnecessary drama.", type: "npc" }
+        ]
+      },
+      {
+        q: "Someone compliments you. Your reaction?",
+        a: [
+          { text: "Give them a compliment right back.", type: "golden" },
+          { text: "Replay the moment in my head later.", type: "overthinker" },
+          { text: "Say thanks and carry on.", type: "npc" },
+          { text: "Make a joke so it is less awkward.", type: "chaos" }
+        ]
+      },
+      {
+        q: "When your group is working on a project, you...",
+        a: [
+          { text: "Come up with the original ideas.", type: "creative" },
+          { text: "Keep everything organized and moving.", type: "organized" },
+          { text: "Keep everyone talking and involved.", type: "yap" },
+          { text: "Turn it into a challenge to win.", type: "competitive" }
+        ]
+      },
+      {
+        q: "Choose a superpower.",
+        a: [
+          { text: "Pause time so I can think.", type: "overthinker" },
+          { text: "Make anyone smile instantly.", type: "golden" },
+          { text: "Teleport to random places.", type: "sidequest" },
+          { text: "Create anything I imagine.", type: "creative" }
+        ]
+      },
+      {
+        q: "Your phone battery is at 2%. You...",
+        a: [
+          { text: "Already have a charger and a backup plan.", type: "organized" },
+          { text: "Accept my fate. It was a good run.", type: "npc" },
+          { text: "Start speed-running every unfinished task.", type: "competitive" },
+          { text: "Somehow end up doing something unrelated.", type: "chaos" }
+        ]
+      },
+      {
+        q: "Which compliment would make your day?",
+        a: [
+          { text: "'You make everyone feel welcome.'", type: "golden" },
+          { text: "'Your ideas are genuinely original.'", type: "creative" },
+          { text: "'You always notice the little things.'", type: "observer" },
+          { text: "'Life is never boring around you.'", type: "wildcard" }
+        ]
+      },
+      {
+        q: "You suddenly have one free hour. What happens?",
+        a: [
+          { text: "I do that thing I have postponed for weeks.", type: "procrastinator" },
+          { text: "I discover a new hobby by accident.", type: "sidequest" },
+          { text: "I start five things and finish... one.", type: "chaos" },
+          { text: "I use the time to recharge quietly.", type: "observer" }
+        ]
+      },
+      {
+        q: "Pick the sentence that feels most like you.",
+        a: [
+          { text: "I have a plan, and the plan has a backup plan.", type: "organized" },
+          { text: "I have ten thoughts and all of them are talking.", type: "overthinker" },
+          { text: "I will figure it out as I go.", type: "wildcard" },
+          { text: "I can make an ordinary day feel special.", type: "golden" }
+        ]
+      }
+    ];
+
+    const personalityTypes = {
+      chaos: {
+        title: "The Chaos Gremlin",
+        emoji: "🌀",
+        tagline: "Your brain has 37 tabs open. None are labelled.",
+        description: "You bring unexpected energy wherever you go. Plans might change, ideas might multiply, but you know how to make an ordinary moment memorable.",
+        energy: "Chaotic good",
+        skill: "Making things interesting",
+        roast: "Your plans have plot twists. Even your backup plan needs a backup plan.",
+        color: "#ffd75e"
+      },
+      procrastinator: {
+        title: "The Professional Procrastinator",
+        emoji: "⏳",
+        tagline: "Tomorrow-you is apparently very talented.",
+        description: "You sometimes need a deadline to get the gears turning. Once you get started, you can surprise yourself with what you accomplish.",
+        energy: "Deadline-powered",
+        skill: "Last-minute focus",
+        roast: "You have mastered the ancient art of doing everything except the thing you need to do.",
+        color: "#ffb8a9"
+      },
+      overthinker: {
+        title: "The 300 IQ Overthinker",
+        emoji: "🧠",
+        tagline: "You considered every possibility. Twice.",
+        description: "You notice details and think things through. Your mind loves exploring possibilities, even when a simple answer would probably do.",
+        energy: "Thought-powered",
+        skill: "Spotting possibilities",
+        roast: "You can turn choosing a snack into a full research project.",
+        color: "#c7b5ff"
+      },
+      npc: {
+        title: "The Unbothered NPC",
+        emoji: "😌",
+        tagline: "Main character energy? You prefer peaceful side scenes.",
+        description: "You can stay calm when other people get caught up in the drama. You value your space, your comfort, and doing things your own way.",
+        energy: "Calm and steady",
+        skill: "Staying grounded",
+        roast: "Everyone else is in season-seven drama, and you are peacefully enjoying the loading screen.",
+        color: "#b7d8ff"
+      },
+      golden: {
+        title: "The Human Golden Retriever",
+        emoji: "🐕",
+        tagline: "Certified sunshine with excellent friend energy.",
+        description: "You care about people and enjoy making them feel included. Your enthusiasm can turn a small good moment into a great memory.",
+        energy: "Sunshine mode",
+        skill: "Lifting people up",
+        roast: "Someone says 'snack' and your whole personality logs back in.",
+        color: "#ffcf76"
+      },
+      yap: {
+        title: "The Certified Yap Machine",
+        emoji: "🗣️",
+        tagline: "A quick story has somehow become a trilogy.",
+        description: "You bring conversation to life. You love sharing thoughts, stories, and random discoveries, and you often help people connect through talking.",
+        energy: "Conversation-powered",
+        skill: "Keeping the chat alive",
+        roast: "Your stories have a beginning, a middle, and three bonus episodes.",
+        color: "#ffb4d0"
+      },
+      observer: {
+        title: "The Silent Observer",
+        emoji: "👀",
+        tagline: "You noticed that. And that. And that too.",
+        description: "You take in the details before jumping into the action. You may be quiet at times, but your observations can bring a useful perspective.",
+        energy: "Quietly curious",
+        skill: "Noticing the details",
+        roast: "You know the entire group chat lore without sending more than four messages.",
+        color: "#b9e5ce"
+      },
+      sidequest: {
+        title: "The Side-Quest Magnet",
+        emoji: "🧭",
+        tagline: "You left for one thing and returned with a story.",
+        description: "Curiosity tends to lead you somewhere interesting. You enjoy new experiences and are good at finding little adventures in everyday life.",
+        energy: "Adventure mode",
+        skill: "Finding the unexpected",
+        roast: "Your shortest route somehow includes three detours and a new hobby.",
+        color: "#a9e6e8"
+      },
+      organized: {
+        title: "The Organized Menace",
+        emoji: "📋",
+        tagline: "Your checklist has a checklist.",
+        description: "You like having a plan and knowing what comes next. Your practical side helps turn big ideas into manageable steps.",
+        energy: "Plan-powered",
+        skill: "Making things happen",
+        roast: "You probably have a colour-coded system for relaxing. Honestly, impressive.",
+        color: "#b8c8ff"
+      },
+      creative: {
+        title: "The Creative Goblin",
+        emoji: "🎨",
+        tagline: "Your imagination refuses to sit quietly.",
+        description: "You enjoy looking at things from a different angle. Whether you make, design, write, or imagine, you bring a personal twist to what you do.",
+        energy: "Idea-powered",
+        skill: "Thinking differently",
+        roast: "You were asked for one idea and returned with a logo, a backstory, and a sequel.",
+        color: "#ffb5e8"
+      },
+      competitive: {
+        title: "The Competitive Tryhard",
+        emoji: "🏆",
+        tagline: "Friendly competition? Challenge accepted.",
+        description: "You like improving, testing your skills, and seeing what you can achieve. A challenge can give you the extra motivation to do your best.",
+        energy: "Challenge mode",
+        skill: "Pushing for progress",
+        roast: "You turn a casual game into a championship with an opening ceremony.",
+        color: "#ffc18d"
+      },
+      wildcard: {
+        title: "The Wildcard Human",
+        emoji: "🎲",
+        tagline: "Predictable? That option was never installed.",
+        description: "You are a mix of different moods, ideas, and interests. You can adapt to the moment and bring your own twist to everyday situations.",
+        energy: "Unpredictably you",
+        skill: "Keeping an open mind",
+        roast: "Even your personality quiz needed a plot twist to keep up with you.",
+        color: "#c9c0ff"
+      }
+    };
+
+    const intro = document.getElementById("intro");
+    const quiz = document.getElementById("quiz");
+    const scanning = document.getElementById("scanning");
+    const result = document.getElementById("result");
+    const startBtn = document.getElementById("startBtn");
+    const answersContainer = document.getElementById("answers");
+    const questionCounter = document.getElementById("questionCounter");
+    const questionNumber = document.getElementById("questionNumber");
+    const questionText = document.getElementById("questionText");
+    const progressFill = document.getElementById("progressFill");
+    const backBtn = document.getElementById("backBtn");
+    const actionStatus = document.getElementById("actionStatus");
+
+    let currentQuestion = 0;
+    let userAnswers = [];
+    let finalType = "wildcard";
+    let scanInterval = null;
+
+    function showSection(section) {
+      [intro, quiz, scanning, result].forEach(item => {
+        item.classList.add("hidden");
+      });
+      section.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startQuiz() {
+      currentQuestion = 0;
+      userAnswers = [];
+      actionStatus.textContent = "";
+      showSection(quiz);
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      const number = String(currentQuestion + 1).padStart(2, "0");
+
+      questionCounter.textContent = `${number} / ${questions.length}`;
+      questionNumber.textContent = `QUESTION ${number}`;
+      questionText.textContent = question.q;
+      progressFill.style.width =
+        `${((currentQuestion + 1) / questions.length) * 100}%`;
+
+      backBtn.disabled = currentQuestion === 0;
+      answersContainer.innerHTML = "";
+
+      question.a.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-button";
+        button.innerHTML = `
+          <span class="answer-letter">${String.fromCharCode(65 + index)}</span>
+          <span class="answer-text"></span>
+          <span class="answer-check">↗</span>
+        `;
+        button.querySelector(".answer-text").textContent = answer.text;
+
+        if (userAnswers[currentQuestion] === answer.type) {
+          button.classList.add("selected");
+        }
+
+        button.addEventListener("click", () => selectAnswer(answer.type));
+        answersContainer.appendChild(button);
+      });
+    }
+
+    function selectAnswer(type) {
+      userAnswers[currentQuestion] = type;
+
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+      } else {
+        beginScan();
+      }
+    }
+
+    function goBack() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+      }
+    }
+
+    function calculateResult() {
+      const scores = {};
+
+      userAnswers.forEach(type => {
+        scores[type] = (scores[type] || 0) + 1;
+      });
+
+      const highestScore = Math.max(...Object.values(scores));
+      const tiedTypes = Object.keys(scores).filter(
+        type => scores[type] === highestScore
+      );
+
+      if (tiedTypes.length === 1) return tiedTypes[0];
+
+      // Resolve ties using the user's most recent answer among tied types.
+      for (let i = userAnswers.length - 1; i >= 0; i--) {
+        if (tiedTypes.includes(userAnswers[i])) {
+          return userAnswers[i];
+        }
+      }
+
+      return "wildcard";
+    }
+
+    function beginScan() {
+      finalType = calculateResult();
+      showSection(scanning);
+
+      const statusMessages = [
+        "Connecting random thoughts...",
+        "Measuring main-character energy...",
+        "Sorting the mental tabs...",
+        "Checking the vibe database...",
+        "Making the results look official..."
+      ];
+
+      const scanTitle = document.getElementById("scanTitle");
+      const scanStatus = document.getElementById("scanStatus");
+      const scanProgressFill = document.getElementById("scanProgressFill");
+      const scanPercent = document.getElementById("scanPercent");
+
+      let progress = 0;
+      let messageIndex = 0;
+      scanTitle.textContent = "Analyzing your human energy...";
+      scanStatus.textContent = statusMessages[0];
+      scanProgressFill.style.width = "0%";
+      scanPercent.textContent = "0%";
+
+      if (scanInterval) clearInterval(scanInterval);
+
+      scanInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 10) + 5;
+        if (progress > 100) progress = 100;
+
+        scanProgressFill.style.width = `${progress}%`;
+        scanPercent.textContent = `${progress}%`;
+
+        if (progress >= (messageIndex + 1) * 20 && messageIndex < statusMessages.length - 1) {
+          messageIndex++;
+          scanStatus.textContent = statusMessages[messageIndex];
+        }
+
+        if (progress >= 100) {
+          clearInterval(scanInterval);
+          scanInterval = null;
+          scanTitle.textContent = "Human successfully detected!";
+          scanStatus.textContent = "Your extremely unofficial results are ready.";
+          setTimeout(showResult, 550);
+        }
+      }, 220);
+    }
+
+    function showResult() {
+      const person = personalityTypes[finalType] || personalityTypes.wildcard;
+
+      document.getElementById("resultEmoji").textContent = person.emoji;
+      document.getElementById("resultTitle").textContent = person.title;
+      document.getElementById("resultTagline").textContent = person.tagline;
+      document.getElementById("resultDescription").textContent = person.description;
+      document.getElementById("statEnergy").textContent = person.energy;
+      document.getElementById("statSkill").textContent = person.skill;
+      document.getElementById("resultRoast").textContent = person.roast;
+      document.getElementById("resultCard").style.setProperty("--person-color", person.color);
+
+      showSection(result);
+    }
+
+    function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = String(text).split(" ");
+      let line = "";
+      let lineCount = 0;
+
+      for (let i = 0; i < words.length; i++) {
+        const testLine = line ? line + " " + words[i] : words[i];
+        const width = ctx.measureText(testLine).width;
+
+        if (width > maxWidth && line) {
+          ctx.fillText(line, x, y);
+          line = words[i];
+          y += lineHeight;
+          lineCount++;
+        } else {
+          line = testLine;
+        }
+      }
+
+      if (line) {
+        ctx.fillText(line, x, y);
+        lineCount++;
+      }
+
+      return lineCount;
+    }
+
+    function roundedRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(
+        x + width, y + height, x + width - radius, y + height
+      );
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function downloadResult() {
+      const person = personalityTypes[finalType] || personalityTypes.wildcard;
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = 1200;
+      canvas.height = 1500;
+
+      const w = canvas.width;
+      const h = canvas.height;
+      const accent = person.color;
+
+      // Warm paper background.
+      ctx.fillStyle = "#f6f1e8";
+      ctx.fillRect(0, 0, w, h);
+
+      // Decorative background shapes.
+      ctx.fillStyle = accent;
+      ctx.globalAlpha = 0.65;
+      ctx.beginPath();
+      ctx.arc(1050, 125, 115, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(120, 1330, 85, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      // Main dark card.
+      roundedRect(ctx, 48, 48, 1104, 1404, 34);
+      ctx.fillStyle = "#20201e";
+      ctx.fill();
+
+      // Double frame.
+      ctx.strokeStyle = "#f6f1e8";
+      ctx.lineWidth = 3;
+      roundedRect(ctx, 72, 72, 1056, 1356, 24);
+      ctx.stroke();
+
+      ctx.strokeStyle = accent;
+      ctx.lineWidth = 2;
+      roundedRect(ctx, 88, 88, 1024, 1324, 18);
+      ctx.stroke();
+
+      // Corner details.
+      const corners = [
+        [110, 110], [1090, 110], [110, 1390], [1090, 1390]
+      ];
+      corners.forEach(([x, y]) => {
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.arc(x, y, 8, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Header.
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#f6f1e8";
+      ctx.font = "bold 36px Arial, sans-serif";
+      ctx.fillText("HUMAN", 125, 160);
+      ctx.fillStyle = accent;
+      ctx.fillText(".EXE", 252, 160);
+
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#c4c0b8";
+      ctx.font = "18px Arial, sans-serif";
+      ctx.fillText("PERSONALITY REPORT  /  001", 1070, 155);
+
+      ctx.strokeStyle = "#55534d";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(125, 190);
+      ctx.lineTo(1075, 190);
+      ctx.stroke();
+
+      // Award heading.
+      ctx.textAlign = "center";
+      ctx.fillStyle = accent;
+      ctx.font = "bold 22px Arial, sans-serif";
+      ctx.fillText("✦  OFFICIALLY UNOFFICIAL CERTIFICATE  ✦", 600, 245);
+
+      ctx.fillStyle = "#f6f1e8";
+      ctx.font = "22px Arial, sans-serif";
+      ctx.fillText("THIS DOCUMENT CERTIFIES THAT YOU ARE", 600, 300);
+
+      // Personality-colored panel.
+      roundedRect(ctx, 125, 350, 950, 620, 28);
+      ctx.fillStyle = accent;
+      ctx.fill();
+
+      // Orbit decoration.
+      ctx.save();
+      ctx.translate(600, 510);
+      ctx.strokeStyle = "rgba(32,32,30,0.3)";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(0, 0, 100, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 130, 52, -0.5, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, 145, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // Personality emoji.
+      ctx.textAlign = "center";
+      ctx.font = "100px Arial, sans-serif";
+      ctx.fillStyle = "#20201e";
+      ctx.fillText(person.emoji, 600, 545);
+
+      // Small certified seal.
+      ctx.beginPath();
+      ctx.arc(890, 420, 55, 0, Math.PI * 2);
+      ctx.fillStyle = "#20201e";
+      ctx.fill();
+
+      ctx.strokeStyle = accent;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(890, 420, 45, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = "#f6f1e8";
+      ctx.font = "bold 14px Arial, sans-serif";
+      ctx.fillText("CERTIFIED", 890, 416);
+      ctx.font = "12px Arial, sans-serif";
+      ctx.fillText("HUMAN", 890, 436);
+
+      // Type title.
+      ctx.fillStyle = "#20201e";
+      ctx.font = "bold 47px Arial, sans-serif";
+      const titleLines = wrapCanvasText(
+        ctx, person.title, 600, 665, 820, 58
+      );
+
+      // Tagline automatically moves down if the title wraps.
+      const taglineY = 665 + titleLines * 58 + 25;
+      ctx.font = "italic 23px Arial, sans-serif";
+      wrapCanvasText(ctx, person.tagline, 600, taglineY, 790, 34);
+
+      // Friendly message panel.
+      roundedRect(ctx, 165, 825, 870, 105, 18);
+      ctx.fillStyle = "rgba(32,32,30,0.09)";
+      ctx.fill();
+
+      ctx.fillStyle = "#20201e";
+      ctx.font = "bold 19px Arial, sans-serif";
+      ctx.fillText("SPECIAL HUMAN QUALIFICATION", 600, 860);
+
+      ctx.font = "20px Arial, sans-serif";
+      wrapCanvasText(ctx, person.skill, 600, 899, 760, 27);
+
+      // Certificate message.
+      ctx.fillStyle = "#f6f1e8";
+      ctx.font = "24px Arial, sans-serif";
+      ctx.fillText("For being unmistakably, wonderfully", 600, 1045);
+
+      ctx.fillStyle = accent;
+      ctx.font = "bold 34px Arial, sans-serif";
+      ctx.fillText("YOURSELF.", 600, 1095);
+
+      ctx.fillStyle = "#c4c0b8";
+      ctx.font = "20px Arial, sans-serif";
+      wrapCanvasText(
+        ctx,
+        "No two humans are exactly alike. Keep your quirks, your ideas, and your own way of doing things.",
+        600, 1145, 820, 30
+      );
+
+      // Footer divider.
+      ctx.strokeStyle = "#55534d";
+      ctx.beginPath();
+      ctx.moveTo(125, 1240);
+      ctx.lineTo(1075, 1240);
+      ctx.stroke();
+
+      ctx.textAlign = "left";
+      ctx.fillStyle = accent;
+      ctx.font = "bold 18px Arial, sans-serif";
+      ctx.fillText("DIFFERENT BY DESIGN.", 130, 1290);
+
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#c4c0b8";
+      ctx.font = "17px Arial, sans-serif";
+      ctx.fillText("HUMAN.EXE  •  FOR FUN ONLY", 1070, 1290);
+
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#8e8a82";
+      ctx.font = "15px Arial, sans-serif";
+      ctx.fillText(
+        "NOT A SCIENTIFIC OR PSYCHOLOGICAL ASSESSMENT",
+        600, 1350
+      );
+
+      const link = document.createElement("a");
+      link.download = "human-exe-personality-certificate.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+
+      actionStatus.textContent = "Your certificate is ready! Check your downloads.";
+    }
+
+    async function shareResult() {
+      const person = personalityTypes[finalType] || personalityTypes.wildcard;
+      const shareText =
+        `My HUMAN.EXE type is ${person.title} ${person.emoji}\n` +
+        `${person.tagline}\n\n` +
+        `Find your human type with HUMAN.EXE!`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "My HUMAN.EXE Personality",
+            text: shareText
+          });
+          actionStatus.textContent = "Share menu opened.";
+          return;
+        } catch (error) {
+          if (error.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareText);
+        actionStatus.textContent = "Result copied! Paste it into your favourite app.";
+      } catch (error) {
+        actionStatus.textContent = shareText;
+      }
+    }
+
+    function retakeQuiz() {
+      if (scanInterval) {
+        clearInterval(scanInterval);
+        scanInterval = null;
+      }
+      startQuiz();
+    }
+
+    startBtn.addEventListener("click", startQuiz);
+    backBtn.addEventListener("click", goBack);
+    document.getElementById("certificateBtn").addEventListener("click", downloadResult);
+    document.getElementById("shareBtn").addEventListener("click", shareResult);
+    document.getElementById("retakeBtn").addEventListener("click", retakeQuiz);
+  </script>
+</body>
+</html>
